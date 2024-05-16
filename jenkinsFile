@@ -2,22 +2,25 @@ pipeline {
     agent any
 
     stages {
-        withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'access_key', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
         stage('test-pipeline') {
             steps {
                 echo "test pipeline"
             }
         }
         stage('terraform init') {
+            withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'access_key', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
             steps {
                 sh 'terraform init'
             }
         }
+        }
        stage('terraform plan') {
+            withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'access_key', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
             steps {
                 sh 'terraform plan'
             }
         }
+    }    
     }
     }
 }
