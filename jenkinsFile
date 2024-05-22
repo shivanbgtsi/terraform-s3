@@ -10,7 +10,6 @@ pipeline {
         stage('terraform init') {
             steps {
                 withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'access_key', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-                export AWS_PROFILE=terraform
                 sh 'terraform init'
             }
         }
