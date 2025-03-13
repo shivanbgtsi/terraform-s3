@@ -31,4 +31,21 @@ jobs:
         run: |
           echo "Creating release for tag ${TAG}"
           gh release create "${TAG}" -t "${TAG}" --generate-notes
+
+      - name: Move major version tag to current commit
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          git fetch --tags
+          LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
+          echo "Latest tag is $LATEST_TAG"
+          MAJOR_VERSION="$(echo $LATEST_TAG | cut -d. -f1)"
+          echo "Major version is $MAJOR_VERSION"
+          # git config user.email "shivanagoudabg@gmail.com"
+          git config user.name "shivanbg"
+          git tag -d $MAJOR_VERSION
+          git push origin :refs/tags/$MAJOR_VERSION
+          git tag $MAJOR_VERSION ${{ github.sha }}
+          git push origin --tags
           
