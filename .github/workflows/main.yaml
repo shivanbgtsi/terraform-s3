@@ -40,6 +40,9 @@ jobs:
           git fetch --tags
           LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
           echo "Latest tag is $LATEST_TAG"
+          git fetch --tags
+          echo "git tags"
+          git tag -l
           MAJOR_VERSION="$(echo $LATEST_TAG | cut -d. -f1)"
           echo "Major version is $MAJOR_VERSION"
           # git config user.email "shivanagoudabg@gmail.com"
