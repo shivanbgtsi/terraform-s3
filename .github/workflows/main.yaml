@@ -47,8 +47,8 @@ jobs:
           echo "Major version is $MAJOR_VERSION"
           # git config user.email "shivanagoudabg@gmail.com"
           git config user.name "shivanbg"
-          git tag -d $MAJOR_VERSION
-          git push origin :refs/tags/$MAJOR_VERSION
-          git tag $MAJOR_VERSION ${{ github.sha }}
+          git tag -d $LATEST_TAG
+          git push origin :refs/tags/$LATEST_TAG
+          git tag $LATEST_TAG ${{ github.sha }}
           git push origin --tags
           
