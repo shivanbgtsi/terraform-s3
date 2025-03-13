@@ -30,7 +30,7 @@ jobs:
         shell: bash
         run: |
           echo "Creating release for tag ${TAG}"
-          gh release create "${TAG}" -t "${TAG}" --generate-notes
+          # gh release create "${TAG}" -t "${TAG}" --generate-notes
 
       - name: Move major version tag to current commit
         env:
