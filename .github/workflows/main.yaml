@@ -21,7 +21,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ inputs.github-token }}
           WITH_V: false
-          DEFAULT_BUMP: minor
+          DEFAULT_BUMP: major
 
       - name: Create release
         env:
