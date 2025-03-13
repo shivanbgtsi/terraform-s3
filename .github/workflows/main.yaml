@@ -3,7 +3,7 @@ name: Cloud Custodian Policies
 on:
   push:
     branches:
-      - test-release
+      - test-release-01
   pull_request:
     branches:
       - main
