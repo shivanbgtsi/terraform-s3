@@ -49,4 +49,3 @@ jobs:
           git push origin :refs/tags/$LATEST_TAG
           git tag $LATEST_TAG ${{ github.sha }}
           git push origin --tags
-          
