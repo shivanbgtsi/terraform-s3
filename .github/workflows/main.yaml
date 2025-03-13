@@ -23,14 +23,14 @@ jobs:
           WITH_V: false
           DEFAULT_BUMP: minor
 
-      - name: Create release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAG: ${{ steps.tag_version.outputs.new_tag }}
-        shell: bash
-        run: |
-          echo "Creating release for tag ${TAG}"
-          gh release create "${TAG}" -t "${TAG}" --generate-notes
+      # - name: Create release
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     TAG: ${{ steps.tag_version.outputs.new_tag }}
+      #   shell: bash
+      #   run: |
+      #     echo "Creating release for tag ${TAG}"
+      #     gh release create "${TAG}" -t "${TAG}" --generate-notes
 
       - name: Move major version tag to current commit
         env:
